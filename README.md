@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Colinha de operadores RxJS
+
+**Pipe**- Função que serve para agrupar múltiplos operadores. Não modifica o observable anterior.
+
+**Tap** - Operador de serviços públicos. Usado para debugging. Não modifica o observable.
+
+**Map** - Operador de transformação. Transforma o observable de acordo com a função passada. Retorna um observable modificado.
