@@ -34,4 +34,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 **Map** - Operador de transformação. Transforma o observable de acordo com a função passada. Retorna um observable modificado.
 
-**switchMap** - Passa apenas o último valor solicitado. 
+**switchMap** - Operador de Transformação. Cancela requisições de observables anteriores, emitindo valores apenas do Observable projetado mais recentemente.
+
+**filter** - Operador de filtragem. Filtra os itens emitidos pelo Observable de origem, permitindo apenas aqueles que satisfaçam uma condição especificada.
+
+**debounceTime** - Operador de filtragem. Retorna um Observable que atrasa as emissões do Observable de origem pelo tempo especificado.
+
+**distinctUntilChanged** - Operador de filtragem. Retorna um Observable que emite todos os valores enviados pelo observable de origem se forem distintos em comparação com o último valor emitido pelo observable de resultado.
