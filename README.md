@@ -33,3 +33,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 **Tap** - Operador de serviços públicos. Usado para debugging. Não modifica o observable.
 
 **Map** - Operador de transformação. Transforma o observable de acordo com a função passada. Retorna um observable modificado.
+
+**switchMap** - Passa apenas o último valor solicitado. 
