@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
+  EMPTY,
   catchError,
   debounceTime,
   distinctUntilChanged,
@@ -22,6 +23,7 @@ const PAUSA = 300;
 })
 export class ListaLivrosComponent {
   campoBusca = new FormControl();
+  mensagemErro = '';
 
   constructor(private service: LivroService) {}
 
@@ -33,9 +35,17 @@ export class ListaLivrosComponent {
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
     tap((retornoAPI) => console.log(retornoAPI)),
     map((items) => this.livrosResultadoParaLivros(items)),
-    catchError((erro) => {
-      console.log(erro);
-      return throwError(() => new Error('Ops, ocorreu um erro'));
+    catchError(() => {
+      this.mensagemErro = 'Ops, ocorreu um erro, Recarregue a aplicação!';
+      return EMPTY;
+      // console.log(erro);
+      // return throwError(
+      //   () =>
+      //     new Error(
+      //       (this.mensagemErro =
+      //         'Ops, ocorreu um erro, Recarregue a aplicação!')
+      //     )
+      // );
     })
   );
 
