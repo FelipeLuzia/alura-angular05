@@ -29,30 +29,16 @@ export class ListaLivrosComponent {
 
   constructor(private service: LivroService) {}
 
-  totalDeLivros$ = this.campoBusca.valueChanges.pipe(
-    debounceTime(PAUSA),
-    filter((valorDigitado) => valorDigitado.length >= 3),
-    tap(() => console.log('Fluxo inicial')),
-    switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
-    map((resultado) => (this.livrosResultado = resultado)),
-    catchError((erro) => {
-      console.error(erro);
-      return of();
-    })
-  );
-
   livrosEncontrados$ = this.campoBusca.valueChanges.pipe(
     debounceTime(PAUSA),
+    tap(() => console.log('Fluxo inicial de dados')),
     filter((valorDigitado) => valorDigitado.length >= 3),
-    tap(() => console.log('Fluxo inicial')),
-    distinctUntilChanged(),
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
-    tap((retornoAPI) => console.log(retornoAPI)),
+    map((resultado) => (this.livrosResultado = resultado)),
     map((resultado) => resultado.items ?? []),
+    tap(console.log),
     map((items) => this.livrosResultadoParaLivros(items)),
     catchError((erro) => {
-      // this.mensagemErro = 'Ops, ocorreu um erro, Recarregue a aplicação!';
-      // return EMPTY;
       console.error(erro);
       return throwError(
         () =>
